@@ -1,24 +1,34 @@
-# x**y mod n
-def ModPotenzieren(x, y, n):
-    return pow(x, y, n)
+from rsa_keygen import RSAKeyGenerator, prime_gen
 
-def verschluesseln(key, klartext):
-    e, n = key
-    geheimtext = ModPotenzieren(klartext, e, n)
-    return geheimtext
+class RSAOperations:
+    @staticmethod
+    def ModPotenzieren(x, y, n):
+        return pow(x, y, n)
 
-def entschluesseln(key, geheimtext):
-    d, n = key
-    klartext = ModPotenzieren(geheimtext, d, n)
-    return klartext
+    @staticmethod
+    def verschluesseln(key, klartext):
+        e, n = key
+        geheimtext = RSAOperations.ModPotenzieren(klartext, e, n)
+        return geheimtext
 
-public_key = (5, 14)  
-private_key = (11, 14)  
+    @staticmethod
+    def entschluesseln(key, geheimtext):
+        d, n = key
+        klartext = RSAOperations.ModPotenzieren(geheimtext, d, n)
+        return klartext
 
-klartext = 9  
-geheimtext = verschluesseln(public_key, klartext)
-entschluesselter_text = entschluesseln(private_key, geheimtext)
+def main():
+    prime_generator = prime_gen()
+    rsa_keygen = RSAKeyGenerator(prime_generator)
+    rsa_keygen.generate_keys()
 
-#print("Klartext:", klartext)
-#print("Geheimtext:", geheimtext)
-#print("Entschlüsselter Text:", entschluesselter_text)
+    public_key = rsa_keygen.get_public_key()
+    private_key = rsa_keygen.get_private_key()
+
+def is_module():
+    pass # TODO: Implement this function
+
+if __name__ == '__main__':
+    main()
+else:
+    is_module()

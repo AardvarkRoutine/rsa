@@ -32,7 +32,6 @@ class RSAKeyGenerator:
     def generate_keys(self):
         p = self.prime_generator.get_prime()
         q = self.prime_generator.get_prime()
-        print("p and q", p, q)
 
         while p == q:
             q = self.prime_generator.get_prime()
