@@ -1,3 +1,4 @@
+# Programm von Oskar und Paul
 import random
 import math
 

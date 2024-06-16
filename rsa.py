@@ -1,3 +1,4 @@
+# Programm von Oskar und Paul
 from rsa_keygen import RSAKeyGenerator, prime_gen
 
 def ModPotenzieren(x, y, n):
